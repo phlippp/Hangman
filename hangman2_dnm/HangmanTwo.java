@@ -54,10 +54,7 @@ public class HangmanTwo {
 
             }
         }
-        while (playAgain.equalsIgnoreCase("y"));
-        {
-
-        }
+      
         System.out.println("You ended the game. Goodbye!");
     }
 
