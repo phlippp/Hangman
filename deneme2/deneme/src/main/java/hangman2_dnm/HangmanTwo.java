@@ -1,5 +1,7 @@
 package hangman2_dnm;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.Random;
 import java.util.List;
@@ -15,6 +17,7 @@ public class HangmanTwo {
 
         Scanner scanner = new Scanner(new File("src/main/java/hangman2_dnm/wordlist.txt"));
         Scanner user = new Scanner(System.in);
+        InputStream in = System.in;
         List<String> words = new ArrayList<String>();
 
         while (scanner.hasNext()) {
@@ -32,7 +35,7 @@ public class HangmanTwo {
             System.out.println("Welcome to Hangman!");
             System.out.println("The word has " + word.length() + " letters.");
             while (true) {
-                getPlayerGuess(user, word, playerGuesses);
+                getPlayerGuess(in, word, playerGuesses);
                 if (printWordState(word, playerGuesses)) {
                     System.out.println("Congratulations! You won!");
                     break;
@@ -51,8 +54,8 @@ public class HangmanTwo {
         System.out.println("You ended the game. Goodbye!");
     }
 
-    public static boolean getPlayerGuess(Scanner user, String word, List<Character> playerGuesses) {
-
+    public static boolean getPlayerGuess(InputStream in, String word, List<Character> playerGuesses) {
+Scanner user = new Scanner(in);
         System.out.println("Enter a letter: ");
         String letterGuess = user.nextLine();
         playerGuesses.add(letterGuess.charAt(0)); //0 means if the input has more than
