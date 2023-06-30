@@ -19,6 +19,7 @@ public class HangmanTwo {
         Scanner user = new Scanner(System.in);
         InputStream in = System.in;
         List<String> words = new ArrayList<String>();
+        List<Character> usedLetters = new ArrayList<>();
 
         while (scanner.hasNext()) {
             words.add(scanner.nextLine());
@@ -26,6 +27,8 @@ public class HangmanTwo {
 
         Random random = new Random();
         List<Character> playerGuesses = new ArrayList<>();
+
+        usedLetters = playerGuesses;
 
         boolean playAgain = true;
         do {
@@ -46,6 +49,7 @@ public class HangmanTwo {
             }
             System.out.print("Do you want to play again? (Y/N): ");
             String response = user.nextLine();
+            usedLetters.clear();
             if (!response.equalsIgnoreCase("y")) {
                 playAgain = false;
             }
